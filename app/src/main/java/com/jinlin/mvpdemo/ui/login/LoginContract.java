@@ -1,4 +1,4 @@
-package com.jinlin.mvpdemo.login;
+package com.jinlin.mvpdemo.ui.login;
 
 import com.jinlin.mvpdemo.base.IModel;
 import com.jinlin.mvpdemo.base.IView;

@@ -1,6 +1,5 @@
-package com.jinlin.mvpdemo.login;
+package com.jinlin.mvpdemo.ui.login;
 
-import com.jinlin.mvpdemo.base.BaseResponse;
 import com.jinlin.mvpdemo.bean.UserBean;
 import com.jinlin.mvpdemo.base.BaseObserver;
 import com.jinlin.mvpdemo.base.BasePresenter;
@@ -21,13 +20,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
 
     public void requestData(final String name, String pwd) {
         getmModel().getData(name, pwd)
-                .compose(RxSchedulers.<BaseResponse<UserBean>>applySchedulers(getLifecycleProvider()))
+                .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
                 .subscribe(new BaseObserver<UserBean>(getmView()) {
                     @Override
-                    public void onSuccess(BaseResponse<UserBean> result) {
-                        if (result.getStatus() == 1000) {
-                            getmView().showData(result.getData());
-                        }
+                    public void onSuccess(UserBean result) {
+//                        if (result.getStatus() == 1000) {
+//                            getmView().showData(result.getData());
+//                        }
+                        getmView().showData(result);
                     }
 
                     @Override

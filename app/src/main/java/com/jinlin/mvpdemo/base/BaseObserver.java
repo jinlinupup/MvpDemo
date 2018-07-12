@@ -41,7 +41,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
     public void onNext(BaseResponse<T> tBaseResponse) {
         hideLoadingDialog();
         if (tBaseResponse.getStatus() == 1000) {
-            onSuccess(tBaseResponse);
+            onSuccess(tBaseResponse.getData());
         } else {
             onFailure(tBaseResponse.getDesc());
         }
@@ -70,7 +70,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
      *
      * @param result 服务器返回数据
      */
-    public abstract void onSuccess(BaseResponse<T> result);
+    public abstract void onSuccess(T result);
 
     /**
      * 请求失败返回
