@@ -1,6 +1,7 @@
 package com.jinlin.mvpdemo.ui.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -74,8 +75,12 @@ public class HomeActivity extends BaseMvpActivity<HomePresenter> implements Home
     @Override
     protected void initListener() {
         btnRes.setOnClickListener(view -> {
-            if (!ClickUtils.isFastDoubleClick(R.id.btnRes))
-                mPresenter.getTaobaoData();
+
+            Intent intent = new Intent();
+            intent.setAction("com.castiel.demo.singleinstance");
+            startActivity(intent);
+//            if (!ClickUtils.isFastDoubleClick(R.id.btnRes))
+//                mPresenter.getTaobaoData();
         });
     }
 

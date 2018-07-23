@@ -1,6 +1,7 @@
 package com.jinlin.mvpdemo.net;
 
 import com.jinlin.mvpdemo.base.BaseResponse;
+import com.jinlin.mvpdemo.bean.NewsBean;
 import com.jinlin.mvpdemo.bean.TaobaoBean;
 import com.jinlin.mvpdemo.bean.UserBean;
 
@@ -23,4 +24,7 @@ public interface Api {
 
     @GET("home/taobaolist")
     Observable<BaseResponse<List<TaobaoBean>>> taobaoData();
+
+    @GET("news")
+    Observable<BaseResponse<List<NewsBean>>> newsData();
 }

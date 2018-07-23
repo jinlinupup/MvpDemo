@@ -7,5 +7,21 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--首页-->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!--toolbar-->
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!--这个是API21以后才有的属性-->
+        <item name="android:colorControlNormal">@color/whiteColor</item>
+        <item name="android:textColorPrimary">@color/whiteColor</item>
+    </style>
 
+    <style name="AppTheme.Toolbar.Popup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorControlNormal">@android:color/white</item>
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
 </resources>

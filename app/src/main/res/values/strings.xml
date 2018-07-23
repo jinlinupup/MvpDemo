@@ -6,4 +6,9 @@
     <string name="pwd">密码</string>
     <string name="login">提交登陆</string>
     <string name="res">点击刷新</string>
+    <string name="menu_search">search</string>
+    <string name="title_new">新闻</string>
+    <string name="title_lib">图书</string>
+    <string name="title_find">发现</string>
+    <string name="title_more">更多</string>
 </resources>

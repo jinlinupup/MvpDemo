@@ -49,7 +49,7 @@ public class BaseRetrofit {
                             .build();
                     retrofit = new Retrofit
                             .Builder()
-                            .baseUrl("http://192.168.1.27:8080/api/")
+                            .baseUrl("http://www.wanandroid.com/tools/mockapi/7677/")
                             .client(client)
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())

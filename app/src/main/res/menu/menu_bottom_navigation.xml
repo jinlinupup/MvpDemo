@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_news"
+        android:icon="@mipmap/ic_news_gray"
+        android:title="@string/title_new" />
+    <item
+        android:id="@+id/item_lib"
+        android:icon="@mipmap/ic_library_gray"
+        android:title="@string/title_lib" />
+
+    <item
+        android:id="@+id/item_find"
+        android:icon="@mipmap/ic_discovery_gray"
+        android:title="@string/title_find" />
+
+    <item
+        android:id="@+id/item_more"
+        android:icon="@mipmap/ic_more_gray"
+        android:title="@string/title_more" />
+
+</menu>

@@ -51,18 +51,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected void initListener() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!ClickUtils.isFastDoubleClick(R.id.btnLogin)) {
-                    if (etUserName.getText().toString().equals("") || etPWd.getText().toString().equals("")) {
-                        Toast.makeText(LoginActivity.this, "用户名密码不能为空", Toast.LENGTH_SHORT).show();
-                    } else {
-                        mPresenter.requestData(etUserName.getText().toString(), etPWd.getText().toString());
-                    }
+        btnLogin.setOnClickListener(view -> {
+            if (!ClickUtils.isFastDoubleClick(R.id.btnLogin)) {
+                if (etUserName.getText().toString().equals("") || etPWd.getText().toString().equals("")) {
+                    Toast.makeText(LoginActivity.this, "用户名密码不能为空", Toast.LENGTH_SHORT).show();
+                } else {
+                    mPresenter.requestData(etUserName.getText().toString(), etPWd.getText().toString());
                 }
-
             }
+
         });
     }
 
