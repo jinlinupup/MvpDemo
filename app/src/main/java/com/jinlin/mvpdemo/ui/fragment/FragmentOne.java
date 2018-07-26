@@ -6,14 +6,20 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jinlin.mvpdemo.R;
 import com.jinlin.mvpdemo.base.BaseFragment;
 import com.jinlin.mvpdemo.base.BaseMvpFragment;
+import com.jinlin.mvpdemo.base.adapter.CommonAdapter;
+import com.jinlin.mvpdemo.base.adapter.ViewHolder;
 import com.jinlin.mvpdemo.bean.NewsBean;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /*********************************************************
  * FragmentOne
@@ -22,6 +28,11 @@ import java.util.List;
  * @dete 2018/7/23
  *********************************************************/
 public class FragmentOne extends BaseMvpFragment<OnePresenter> implements OneContract.View {
+
+    private CommonAdapter<NewsBean> adapter;
+    private List<NewsBean> mData;
+    @BindView(R.id.lvDemo)
+    ListView lvDemo;
 
     public static FragmentOne newInstance() {
         Bundle bundle = new Bundle();
@@ -32,13 +43,25 @@ public class FragmentOne extends BaseMvpFragment<OnePresenter> implements OneCon
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_base;
+        return R.layout.activity_home;
     }
 
     @Override
     protected void initView(View view) {
-        TextView tvInfo = view.findViewById(R.id.textView);
-        tvInfo.setText("ONE");
+        if (mData == null) {
+            mData = new ArrayList<>();
+        }
+        adapter = new CommonAdapter<NewsBean>(getActivity(), mData, R.layout.fragment_one_list_item) {
+            @Override
+            public void convert(ViewHolder helper, NewsBean item, int position) {
+                helper.setText(R.id.tvUser, item.getSubject());
+                helper.setText(R.id.tvTitle, item.getTitle());
+                helper.setText(R.id.tvContent, item.getContent());
+                helper.setText(R.id.tvTime, item.getTime());
+
+            }
+        };
+        lvDemo.setAdapter(adapter);
     }
 
     @Override
@@ -48,7 +71,7 @@ public class FragmentOne extends BaseMvpFragment<OnePresenter> implements OneCon
 
     @Override
     protected void initData() {
-
+        mPresenter.getNewsData();
     }
 
     @Override
@@ -58,6 +81,7 @@ public class FragmentOne extends BaseMvpFragment<OnePresenter> implements OneCon
 
     @Override
     public void showData(List<NewsBean> data) {
-
+        mData.addAll(data);
+        adapter.updateListView(mData);
     }
 }

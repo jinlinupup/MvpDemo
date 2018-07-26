@@ -14,7 +14,7 @@
     android:paddingTop="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.jinlin.mvpdemo.util.CircleImageView
+    <com.jinlin.mvpdemo.util.custom.CircleImageView
         android:id="@+id/civHead"
         android:layout_width="72dp"
         android:layout_height="72dp"

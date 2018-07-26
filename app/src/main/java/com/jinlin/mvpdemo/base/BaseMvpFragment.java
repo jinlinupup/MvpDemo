@@ -37,6 +37,7 @@ public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragm
             if (mPresenter != null) {
                 mPresenter.attachView(this);
             }
+            initData();
         }
     }
 

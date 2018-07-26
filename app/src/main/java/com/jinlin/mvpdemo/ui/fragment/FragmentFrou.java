@@ -27,13 +27,12 @@ public class FragmentFrou extends BaseMvpFragment<OnePresenter> implements IView
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_base;
+        return R.layout.fragment_main_four;
     }
 
     @Override
     protected void initView(View view) {
-        TextView tvInfo = view.findViewById(R.id.textView);
-        tvInfo.setText("FROU");
+        
     }
 
     @Override

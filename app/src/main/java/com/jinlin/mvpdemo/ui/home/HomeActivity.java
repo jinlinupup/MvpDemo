@@ -31,8 +31,6 @@ public class HomeActivity extends BaseMvpActivity<HomePresenter> implements Home
 
     @BindView(R.id.lvDemo)
     ListView lvDemo;
-    @BindView(R.id.btnRes)
-    Button btnRes;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,14 +72,7 @@ public class HomeActivity extends BaseMvpActivity<HomePresenter> implements Home
 
     @Override
     protected void initListener() {
-        btnRes.setOnClickListener(view -> {
 
-            Intent intent = new Intent();
-            intent.setAction("com.castiel.demo.singleinstance");
-            startActivity(intent);
-//            if (!ClickUtils.isFastDoubleClick(R.id.btnRes))
-//                mPresenter.getTaobaoData();
-        });
     }
 
     @Override

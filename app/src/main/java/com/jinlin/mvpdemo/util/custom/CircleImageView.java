@@ -1,4 +1,4 @@
-package com.jinlin.mvpdemo.util;
+package com.jinlin.mvpdemo.util.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;

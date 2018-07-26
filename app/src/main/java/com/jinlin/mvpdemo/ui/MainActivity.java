@@ -21,7 +21,7 @@ import com.jinlin.mvpdemo.ui.fragment.FragmentOne;
 import com.jinlin.mvpdemo.ui.fragment.FragmentThree;
 import com.jinlin.mvpdemo.ui.fragment.FragmentTwo;
 import com.jinlin.mvpdemo.util.BottomNavigationViewHelper;
-import com.jinlin.mvpdemo.util.CircleImageView;
+import com.jinlin.mvpdemo.util.custom.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private NavigationView nav_view;
@@ -59,41 +59,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         CircleImageView head_iv = headView.findViewById(R.id.civHead);
 
-        head_iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("TAGMAIN", "OPEN THE HEAD");
-            }
-        });
+        head_iv.setOnClickListener(v -> Log.i("TAGMAIN", "OPEN THE HEAD"));
 
         viewPager = findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(3);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.item_news:
-                                toolbar.setTitle(R.string.title_new);
-                                viewPager.setCurrentItem(0);
-                                break;
-                            case R.id.item_lib:
-                                toolbar.setTitle(R.string.title_lib);
-                                viewPager.setCurrentItem(1);
-                                break;
-                            case R.id.item_find:
-                                toolbar.setTitle(R.string.title_find);
-                                viewPager.setCurrentItem(2);
-                                break;
-                            case R.id.item_more:
-                                toolbar.setTitle(R.string.title_more);
-                                viewPager.setCurrentItem(3);
-                                break;
-                        }
-                        return true;
+                item -> {
+                    switch (item.getItemId()) {
+                        case R.id.item_news:
+                            toolbar.setTitle(R.string.title_new);
+                            viewPager.setCurrentItem(0);
+                            break;
+                        case R.id.item_lib:
+                            toolbar.setTitle(R.string.title_lib);
+                            viewPager.setCurrentItem(1);
+                            break;
+                        case R.id.item_find:
+                            toolbar.setTitle(R.string.title_find);
+                            viewPager.setCurrentItem(2);
+                            break;
+                        case R.id.item_more:
+                            toolbar.setTitle(R.string.title_more);
+                            viewPager.setCurrentItem(3);
+                            break;
                     }
+                    return true;
                 });
 
 
@@ -124,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
 
         adapter.addFragment(FragmentOne.newInstance());
         adapter.addFragment(FragmentTwo.newInstance());

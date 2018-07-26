@@ -24,12 +24,27 @@ import io.reactivex.schedulers.Schedulers;
 public class RxSchedulers {
     public static <T> ObservableTransformer<T, T> applySchedulers(final LifecycleProvider provider) {
         return new ObservableTransformer<T, T>() {
-            @Override public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
                 return upstream
                         .retryWhen(new RetryWithDelay())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .compose(RxSchedulers.<T>bindToLifecycle(provider));
+
+            }
+        };
+    }
+
+    public static <T> ObservableTransformer<T, T> applySchedulers(final LifecycleProvider provider, final FragmentEvent fragmentEvent) {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream
+                        .retryWhen(new RetryWithDelay())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .compose(RxSchedulers.<T>bindToLifecycle(provider, fragmentEvent));
 
             }
         };
